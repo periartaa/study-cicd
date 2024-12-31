@@ -1,6 +1,4 @@
 name: Deploy to Cloud Run Without Testing
-
-
 on:
   push:
     branches: [ main ]
@@ -32,7 +30,7 @@ jobs:
     - name: Build and Push
       run: |
         docker build -t $ARTIFACT_LOCATION/-docker.pkg.dev/$PROJECT_ID/$ARTIFACT_REGISTRY/$SERVICE:${{ github.sha }} ./
-        docker push $ARTIFACT_LOCATION/-docker.pkg.dev/$PROJECT_ID/$ARTIFACT_REGISTRY/$SERVICE:${{ github.sha }} ./
+        docker push $ARTIFACT_LOCATION/-docker.pkg.dev/$PROJECT_ID/$ARTIFACT_REGISTRY/$SERVICE:${{ github.sha }}
         
     - name: Deploy to Cloud Run
       run: |
