@@ -35,5 +35,5 @@ jobs:
           gcloud run deploy app-service \
               --image gcr.io/${{ secrets.GCP_PROJECT_ID }}/app-image \
               --platform managed \
-              --region us-central1 \
+              --region asia-southeast2 \
               --allow-unauthenticated
