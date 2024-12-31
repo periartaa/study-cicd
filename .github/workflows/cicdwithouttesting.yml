@@ -28,14 +28,14 @@ jobs:
 
     - name: Build and Push Docker Image
       run: |
-        IMAGE_URI=asia-southeast2-docker.pkg.dev/study-cicd2024/myapp/default:latest
+        IMAGE_URI=asia-southeast2-docker.pkg.dev/study-cicd2024/repository-name/app-name:latest
         docker build -t $IMAGE_URI .
         docker push $IMAGE_URI
 
     - name: Deploy to Cloud Run
       run: |
         gcloud run deploy app-name \
-          --image asia-southeast2-docker.pkg.dev/study-cicd2024/myapp/default:latest \
+          --image asia-southeast2-docker.pkg.dev/study-cicd2024/repository-name/app-name:latest \
           --platform managed \
           --region asia-southeast2 \
           --allow-unauthenticated
