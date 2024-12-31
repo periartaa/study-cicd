@@ -67,15 +67,17 @@ jobs:
       
       - name: Buil and Push Container
         run: |-
-          docker build -t "$({ env.GAR_LOCATION})-doker.pkg.dev/$({ env.PROJECT_ID}):$({ githb.sha})" ./
-          docker push "$({ env.GAR_LOCATION})-doker.pkg.dev/$({ env.PROJECT_ID}):$({ githb.sha})"
+          docker build -t "$({ env.GAR_LOCATION })-doker.pkg.dev/$({ env.PROJECT_ID })$({ env.GAR_LOCATION})/$({ env.SERVICE }):$({ githb.sha})" ./
+          docker push "$({ env.GAR_LOCATION })-doker.pkg.dev/$({ env.PROJECT_ID })$({ env.GAR_LOCATION})/$({ env.SERVICE }):$({ githb.sha})"
 
 
       - name: Deploy to Cloud Run
-        run: |-
-          gcloud run deploy "${{ env.SERVICE }}" \
-            --image "${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.GAR_NAME }}:${{ github.sha }}" \
-            --region "${{ env.REGION }}" \
-            --platform managed \
-            --allow-unauthenticated \
-            --project "${{ env.PROJECT_ID }}"
+        id: deploy
+        uses: google-github-action/deploy-cloudrun@v0
+        with:
+          service: $({ env.SERVICE })
+          region: $({ env.REGION })
+          image: "$({ env.GAR_LOCATION })-doker.pkg.dev/$({ env.PROJECT_ID })$({ env.GAR_LOCATION})/$({ env.SERVICE }):$({ githb.sha})"
+
+
+      
