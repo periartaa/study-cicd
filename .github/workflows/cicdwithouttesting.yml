@@ -29,8 +29,9 @@ jobs:
       
     - name: Build and Push
       run: |
-        docker build -t asia-southeast2-docker.pkg.dev/$PROJECT_ID/asia-southeast2/$ARTIFACT_REGISTRY/app:${{ github.sha }} .
-        docker push asia-southeast2-docker.pkg.dev/$PROJECT_ID/asia-southeast2/$ARTIFACT_REGISTRY/app:${{ github.sha }}
+        docker build -t asia-southeast2-docker.pkg.dev/$PROJECT_ID/$ARTIFACT_REGISTRY/app:${{ github.sha }} .
+        docker push asia-southeast2-docker.pkg.dev/$PROJECT_ID/$ARTIFACT_REGISTRY/app:${{ github.sha }}
+
 
 
         
