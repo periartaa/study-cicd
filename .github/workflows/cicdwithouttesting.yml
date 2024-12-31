@@ -1,18 +1,18 @@
 name: Deploy to Cloud Run Without Testing
+# .github/workflows/cloud-run.yml
+name: Deploy to Cloud Run
+
 on:
   push:
     branches: [ main ]
+
 env:
-  PROJECT_ID: study-cicd2024
+  PROJECT_ID: your-project-id
   REGION: asia-southeast2
-  ARTIFACT_REGISTRY: theapp
+  ARTIFACT_REGISTRY: your-registry-name
 
 jobs:
   deploy:
-    permissions:
-      contents: 'read'
-      id-token: 'write'
-
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
@@ -21,13 +21,12 @@ jobs:
       uses: google-github-actions/auth@v2
       with:
         credentials_json: ${{ secrets.GCP_SA_KEY }}
-        token_format: 'access_token'
         
     - name: Set up Cloud SDK
       uses: google-github-actions/setup-gcloud@v2
       
     - name: Configure Docker
-      run: gcloud auth configure-docker asia-southeast2-docker.pkg.dev --quiet
+      run: gcloud auth configure-docker asia-southeast2-docker.pkg.dev
       
     - name: Build and Push
       run: |
@@ -39,5 +38,4 @@ jobs:
         gcloud run deploy app \
           --image asia-southeast2-docker.pkg.dev/$PROJECT_ID/$ARTIFACT_REGISTRY/app:${{ github.sha }} \
           --region $REGION \
-          --platform managed \
-          --allow-unauthenticated
+          --platform managed
