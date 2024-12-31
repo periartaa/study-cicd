@@ -1,41 +1,39 @@
 name: Deploy to Cloud Run Without Testing
 
-on: 
+on:
   push:
-    branches:
-      - main
+    branches: [ main ]
+
+env:
+  PROJECT_ID: your-project-id
+  REGION: asia-southeast2
+  ARTIFACT_REGISTRY: your-registry-name
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-
-    - name: Authenticate with Google Cloud
-      uses: google-github-actions/auth@v1
+    - uses: actions/checkout@v4
+    
+    - name: Google Auth
+      uses: google-github-actions/auth@v2
       with:
-        credentials_json: ${{ secrets.GCP_CREDENTIALS }}
-
+        credentials_json: ${{ secrets.GCP_SA_KEY }}
+        
     - name: Set up Cloud SDK
-      uses: google-github-actions/setup-gcloud@v1
-      with:
-        project_id: study-cicd2024
-
-    - name: Configure Docker for Artifact Registry
+      uses: google-github-actions/setup-gcloud@v2
+      
+    - name: Configure Docker
       run: gcloud auth configure-docker asia-southeast2-docker.pkg.dev
-
-    - name: Build and Push Docker Image
+      
+    - name: Build and Push
       run: |
-        IMAGE_URI=asia-southeast2-docker.pkg.dev/study-cicd2024/repository-name/app-name:latest
-        docker build -t $IMAGE_URI .
-        docker push $IMAGE_URI
-
+        docker build -t asia-southeast2-docker.pkg.dev/$PROJECT_ID/$ARTIFACT_REGISTRY/app:${{ github.sha }} .
+        docker push asia-southeast2-docker.pkg.dev/$PROJECT_ID/$ARTIFACT_REGISTRY/app:${{ github.sha }}
+        
     - name: Deploy to Cloud Run
       run: |
-        gcloud run deploy app-name \
-          --image asia-southeast2-docker.pkg.dev/study-cicd2024/repository-name/app-name:latest \
-          --platform managed \
-          --region asia-southeast2 \
-          --allow-unauthenticated
+        gcloud run deploy app \
+          --image asia-southeast2-docker.pkg.dev/$PROJECT_ID/$ARTIFACT_REGISTRY/app:${{ github.sha }} \
+          --region $REGION \
+          --platform managed
