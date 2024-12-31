@@ -1,7 +1,8 @@
 name: Deploy to Cloud Run Without Testing
 on:
   push:
-    branches: [ main ]
+    branches: 
+      - main
 
 env:
   PROJECT_ID: study-cicd2024
