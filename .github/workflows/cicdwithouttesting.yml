@@ -29,8 +29,8 @@ jobs:
       
     - name: Build and Push
       run: |
-        docker build -t $ARTIFACT_LOCATION/-docker.pkg.dev/$PROJECT_ID/$ARTIFACT_REGISTRY/myapp:${{ github.sha }} ./
-        docker push $ARTIFACT_LOCATION/-docker.pkg.dev/$PROJECT_ID/$ARTIFACT_REGISTRY/myapp:${{ github.sha }}
+        docker build -t asia-southeast2-docker.pkg.dev/$PROJECT_ID/asia-southeast2/$ARTIFACT_REGISTRY/app:${{ github.sha }} .
+        docker push asia-southeast2-docker.pkg.dev/$PROJECT_ID/asia-southeast2/$ARTIFACT_REGISTRY/app:${{ github.sha }}
         
     - name: Deploy to Cloud Run
       run: |
