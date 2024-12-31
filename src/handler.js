@@ -1,4 +1,3 @@
-// src/handler.js
 const login = (req, res) => {
   try {
     const { username, password } = req.body;

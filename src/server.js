@@ -1,10 +1,9 @@
-// src/server.js
 const express = require("express");
 const session = require("express-session");
 const routes = require("./routes");
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(express.json());
@@ -19,9 +18,7 @@ app.use(
 // Routes
 app.use(routes);
 
-// Server
+// Start the server
 app.listen(PORT, () => {
-  console.log(`Server berjalan di http://localhost:${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });
-
-module.exports = app; // Export untuk testing
