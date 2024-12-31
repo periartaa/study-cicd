@@ -47,7 +47,7 @@ jobs:
       contents: 'read'
       id-token: 'write'
 
-    runs-on: 'ubuntu-latest'  
+    runs-on: ubuntu-latest
     
     steps:
       - name: Checkout code
@@ -78,6 +78,9 @@ jobs:
           service: $({ env.SERVICE })
           region: $({ env.REGION })
           image: "$({ env.GAR_LOCATION })-doker.pkg.dev/$({ env.PROJECT_ID })$({ env.GAR_LOCATION})/$({ env.SERVICE }):$({ githb.sha})"
+
+      - name: Show Output
+        run: echo $({ steps.deployoutputs.url })
 
 
       
