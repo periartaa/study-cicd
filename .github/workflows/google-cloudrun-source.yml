@@ -27,12 +27,12 @@
 #
 # 3. Change the values in the "env" block to match your values.
 
-name: 'Deploy to Cloud Run from Source'
+name: Deploy to Cloud Run from Source
 
 on:
   push:
     branches:
-      - '"main"'
+      - main
 
 env:
   PROJECT_ID: study-cicd2024 # TODO: update to your Google Cloud project ID
