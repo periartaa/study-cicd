@@ -1,19 +1,23 @@
+// src/handler.js
 const login = (req, res) => {
   try {
-    const { username } = req.body;
+    const { username, password } = req.body;
 
     // Validasi input
-    if (!username || typeof username !== "string") {
-      return res.status(400).send("Invalid username");
+    if (!username || !password) {
+      return res.status(400).send("Username and password are required");
     }
 
-    // Simpan username dalam session
-    if (req.session) {
-      req.session.user = username;
-      return res.status(200).send("Login successful");
-    } else {
-      return res.status(500).send("Session is not available");
+    // Cek kredensial (contoh sederhana)
+    if (username === "admin" && password === "1234") {
+      // Simpan username dalam session
+      if (req.session) {
+        req.session.user = username;
+        return res.status(200).send("Login successful");
+      }
     }
+
+    return res.status(401).send("Invalid credentials");
   } catch (error) {
     console.error("Error during login:", error);
     return res.status(500).send("Internal server error");
@@ -22,8 +26,8 @@ const login = (req, res) => {
 
 const logout = (req, res) => {
   try {
-    // Periksa apakah session tersedia
-    if (!req.session) {
+    // Periksa apakah ada user dalam session
+    if (!req.session || !req.session.user) {
       return res.status(400).send("No active session");
     }
 
