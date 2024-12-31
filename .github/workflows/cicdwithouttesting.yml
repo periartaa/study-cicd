@@ -1,6 +1,6 @@
 name: Deploy to Cloud Run Without Testing
 
-on:
+on: 
   push:
     branches:
       - main
