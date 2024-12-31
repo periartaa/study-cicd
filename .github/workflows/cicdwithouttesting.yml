@@ -6,11 +6,17 @@ on:
       - main
 
 jobs:
-  deploy:
+  test-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
 
       - name: Set up Google Cloud SDK
         uses: google-github-actions/setup-gcloud@v1
@@ -19,13 +25,15 @@ jobs:
           project_id: ${{ secrets.GCP_PROJECT_ID }}
 
       - name: Build and Push Docker image
+        if: success()
         run: |
           gcloud builds submit --tag gcr.io/${{ secrets.GCP_PROJECT_ID }}/app-image
 
       - name: Deploy to Cloud Run
+        if: success()
         run: |
           gcloud run deploy app-service \
               --image gcr.io/${{ secrets.GCP_PROJECT_ID }}/app-image \
               --platform managed \
-              --region asia-southeast2 \
+              --region us-central1 \
               --allow-unauthenticated
