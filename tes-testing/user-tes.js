@@ -1,16 +1,16 @@
-const chai = require("chai");
-const chaiHttp = require("chai-http");
-const express = require("express");
-const session = require("express-session");
-const routes = require("../src/routes");
+import chai from "chai";
+import chaiHttp from "chai-http";
+import express from "express";
+import session from "express-session";
+import routes from "../src/routes.js"; // Pastikan Anda menambahkan `.js` jika menggunakan ESM
+
+const { expect } = chai;
+chai.use(chaiHttp);
 
 const app = express();
 app.use(express.json());
 app.use(session({ secret: "secret", resave: false, saveUninitialized: true }));
 app.use("/", routes);
-
-chai.use(chaiHttp);
-const { expect } = chai;
 
 describe("User Authentication", () => {
   it("should login successfully", (done) => {

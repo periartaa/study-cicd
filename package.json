@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "esm": "^3.2.25",
     "express": "^4.21.2",
     "express-session": "^1.18.1",
     "init": "^0.1.2",
@@ -11,7 +12,7 @@
   "scripts": {
     "start": "node src/server.js",
     "start:dev": "nodemon ./src/server.js",
-    "test": "mocha tes-testing/user-tes.mjs"
+    "test": "mocha tes-testing/user-tes.js"
   },
   "author": "",
   "license": "ISC",
