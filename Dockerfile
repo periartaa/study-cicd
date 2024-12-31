@@ -1,20 +1,19 @@
-# Use the official Node.js image as the base image
-FROM node:14
+# Dockerfile
+FROM node:18-slim
 
-# Set the working directory
-WORKDIR /usr/src/app
+WORKDIR /app
 
-# Copy package.json and package-lock.json
+# Copy package files
 COPY package*.json ./
 
-# Install dependencies
-RUN npm install
+# Install production dependencies
+RUN npm ci --only=production
 
-# Copy the rest of the application code
+# Copy app source
 COPY . .
 
-# Expose the port the app runs on
+# Expose port
 EXPOSE 3000
 
-# Command to run the application
-CMD ["node", "server.js"]
+# Start the app
+CMD [ "npm", "start" ]
