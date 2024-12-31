@@ -5,9 +5,9 @@ on:
     branches: [ main ]
 
 env:
-  PROJECT_ID: your-project-id
+  PROJECT_ID: study-cicd2024
   REGION: asia-southeast2
-  ARTIFACT_REGISTRY: your-registry-name
+  ARTIFACT_REGISTRY: theapp
 
 jobs:
   deploy:
