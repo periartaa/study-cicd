@@ -24,7 +24,7 @@ jobs:
         project_id: study-cicd2024
 
     - name: Configure Docker for Artifact Registry
-      run: gcloud auth configure-docker ${GCP_REGION}-docker.pkg.dev
+      run: gcloud auth configure-docker asia-southeast2-docker.pkg.dev
 
     - name: Build and Push Docker Image
       run: |
