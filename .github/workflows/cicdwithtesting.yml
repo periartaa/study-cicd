@@ -1,4 +1,4 @@
-name: CI/CD without Testing for Google Cloud Run
+name: Deploy to Cloud Run With Testing
 
 on:
   push:
@@ -8,32 +8,45 @@ on:
 jobs:
   test-and-deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      - name: Install dependencies
-        run: npm install
+    - name: Set up Node.js (adjust if using a different environment)
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16
 
-      - name: Run tests
-        run: npm test
+    - name: Install Dependencies
+      run: npm install
 
-      - name: Set up Google Cloud SDK
-        uses: google-github-actions/setup-gcloud@v1
-        with:
-          service_account_key: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
-          project_id: ${{ secrets.GCP_PROJECT_ID }}
+    - name: Run Tests
+      run: npm test
 
-      - name: Build and Push Docker image
-        if: success()
-        run: |
-          gcloud builds submit --tag gcr.io/${{ secrets.GCP_PROJECT_ID }}/app-image
+    - name: Authenticate with Google Cloud
+      uses: google-github-actions/auth@v1
+      with:
+        credentials_json: ${{ secrets.GCP_CREDENTIALS }}
 
-      - name: Deploy to Cloud Run
-        if: success()
-        run: |
-          gcloud run deploy app-service \
-              --image gcr.io/${{ secrets.GCP_PROJECT_ID }}/app-image \
-              --platform managed \
-              --region asia-southeast2 \
-              --allow-unauthenticated
+    - name: Set up Cloud SDK
+      uses: google-github-actions/setup-gcloud@v1
+      with:
+        project_id: study-cicd2024
+
+    - name: Configure Docker for Artifact Registry
+      run: gcloud auth configure-docker asia-southeast2-docker.pkg.dev
+
+    - name: Build and Push Docker Image
+      run: |
+        IMAGE_URI=${GCP_REGION}-docker.pkg.dev/study-cicd2024/repository-name/app-name:latest
+        docker build -t $IMAGE_URI .
+        docker push $IMAGE_URI
+
+    - name: Deploy to Cloud Run
+      run: |
+        gcloud run deploy app-name \
+          --image asia-southeast2-docker.pkg.dev/study-cicd2024/repository-name/app-name:latest \
+          --platform managed \
+          --region asia-southeast2 \
+          --allow-unauthenticated
