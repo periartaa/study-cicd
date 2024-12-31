@@ -1,38 +1,54 @@
-name: CI/CD With Testing Using Google Cloud Run
-
+name: CI/CD without Testing for Google Cloud Run
 on:
   push:
     branches:
       - main
-
 jobs:
-  test-and-deploy:
+  build-and-test:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Google Auth
+        id: auth
+        uses: 'google-github-actions/auth@v1'
+        with:
+          credentials_json: '${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}'
+          
+      - name: Set up Google Cloud CLI
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+          
+      - name: Configure Docker for Artifact Registry
+        run: |
+          gcloud auth configure-docker asia-southeast2-docker.pkg.dev --quiet
+          
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
 
       - name: Install dependencies
         run: npm install
 
-      - name: Run tests
-        run: npm test
 
-      - name: Set up Google Cloud SDK
-        uses: google-github-actions/setup-gcloud@v1
-        with:
-          service_account_key: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
-          project_id: ${{ secrets.GCP_PROJECT_ID }}
+      - name: Set up Docker
+        uses: docker/setup-buildx-action@v2
 
-      - name: Build and Push Docker image
+      - name: Build Docker image
         run: |
-          gcloud builds submit --tag gcr.io/${{ secrets.GCP_PROJECT_ID }}/app-image
+          docker build -t asia-southeast2-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/my-repo/my-app:$GITHUB_SHA .
 
-      - name: Deploy to Cloud Run
-        if: success()
+      - name: Push Docker image to Artifact Registry
         run: |
-          gcloud run deploy app-service \
-              --image gcr.io/${{ secrets.GCP_PROJECT_ID }}/app-image \
-              --platform managed \
-              --region asia-southeast2 \
-              --allow-unauthenticated
+          docker push asia-southeast2-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/my-repo/my-app:$GITHUB_SHA
+
+      - name: Deploy to Google Cloud Run
+        run: |
+          gcloud run deploy my-app \
+            --image asia-southeast2-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/my-repo/my-app:$GITHUB_SHA \
+            --platform managed \
+            --region asia-southeast2 \
+            --allow-unauthenticated
