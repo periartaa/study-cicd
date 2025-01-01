@@ -9,8 +9,7 @@ env:
   REGION: asia-southeast2
   ARTIFACT_REGISTRY: gs-demo
   ARTIFACT_LOCATION: asia-southeast2
-  SERVICE: myapp-satu
-
+  
 jobs:
   deploy:
     runs-on: ubuntu-latest
