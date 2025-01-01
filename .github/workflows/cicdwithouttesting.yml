@@ -38,5 +38,5 @@ jobs:
         gcloud run deploy app \
           --image asia-southeast2-docker.pkg.dev/$PROJECT_ID/$ARTIFACT_REGISTRY/app:${{ github.sha }} \
           --region $REGION \
-          --platform managed
+          --platform managed \
           --allow-unauthenticated
