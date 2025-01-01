@@ -10,8 +10,7 @@ env:
   REGION: asia-southeast2
   ARTIFACT_REGISTRY: gs-demo
   ARTIFACT_LOCATION: asia-southeast2
-  SERVICE: myapp-satu
-
+  
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -56,4 +55,5 @@ jobs:
         gcloud run deploy app \
           --image asia-southeast2-docker.pkg.dev/$PROJECT_ID/$ARTIFACT_REGISTRY/app:${{ github.sha }} \
           --region $REGION \
-          --platform managed
+          --platform managed \
+          --allow-unauthenticated
