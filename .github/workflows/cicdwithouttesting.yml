@@ -39,3 +39,4 @@ jobs:
           --image asia-southeast2-docker.pkg.dev/$PROJECT_ID/$ARTIFACT_REGISTRY/app:${{ github.sha }} \
           --region $REGION \
           --platform managed
+          --allow-unauthenticated
