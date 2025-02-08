@@ -1,7 +1,2 @@
 ﻿# Study-CI/CD
-Continuous Integration/Continuous Deployment atau CI/CD adalah sebuah praktik pengembangan perangkat lunak (software development).
-
-# Manfaat dari CI/CD
-Mendapat feedback lebih cepat,
-Dapat mendeteksi bug lebih cepat,
-Dapat mempercepat proses rilis.
+CI/CD, atau Continuous Integration/Continuous Deployment, adalah praktik pengembangan perangkat lunak yang mengotomatiskan proses integrasi dan penyebaran kode. Dalam CI, setiap perubahan kode diintegrasikan secara berkala dan diuji secara otomatis, memastikan kualitas kode tetap terjaga. Sementara itu, CD secara otomatis menyebarkan kode yang telah diuji ke lingkungan produksi, memungkinkan rilis fitur baru dan perbaikan bug yang lebih cepat. Dengan CI/CD, tim pengembang dapat bekerja lebih efisien, menghasilkan perangkat lunak berkualitas tinggi, dan memberikan nilai tambah kepada pengguna secara berkelanjutan.
