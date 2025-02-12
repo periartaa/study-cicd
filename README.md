@@ -11,14 +11,20 @@ https://github.com/periartaa/study-cicd.git
 ```
 
 ### 2. Instal Dependensi
-Jalankan perintah berikut untuk menginstal dependensi pada projek RO-CC
+Jalankan perintah berikut untuk menginstal dependensi pada projek anda.
 ```bash
 npm install
 ```
-Penginstalan berhasil ketika folder node_modules sudah muncul pada direktori anda
+Penginstalan berhasil ketika folder node_modules sudah muncul pada direktori anda.
 
-### 5. Run Program
-Untuk menjalankan api jalankan perintah di terminal, pastikan sudah pernah install nodemon sebelumnya
+### 3. Konfigurasi env
+
 ```bash
-npm run start
+env:
+  PROJECT_ID:....
+  REGION:....
+  ARTIFACT_REGISTRY:....
+  ARTIFACT_LOCATION:....
 ```
+Sesuaikan dengan projek yang kalian buat.
+
