@@ -1,2 +1,24 @@
 ﻿# Study-CI/CD
 CI/CD, atau Continuous Integration/Continuous Deployment, adalah praktik pengembangan perangkat lunak yang mengotomatiskan proses integrasi dan penyebaran kode. Dalam CI, setiap perubahan kode diintegrasikan secara berkala dan diuji secara otomatis, memastikan kualitas kode tetap terjaga. Sementara itu, CD secara otomatis menyebarkan kode yang telah diuji ke lingkungan produksi, memungkinkan rilis fitur baru dan perbaikan bug yang lebih cepat. Dengan CI/CD, tim pengembang dapat bekerja lebih efisien, menghasilkan perangkat lunak berkualitas tinggi, dan memberikan nilai tambah kepada pengguna secara berkelanjutan.
+
+
+## Instalasi
+
+### 1. Clone Repository
+Pertama kita donlowad repository dari github
+```bash
+https://github.com/periartaa/study-cicd.git
+```
+
+### 2. Instal Dependensi
+Jalankan perintah berikut untuk menginstal dependensi pada projek RO-CC
+```bash
+npm install
+```
+Penginstalan berhasil ketika folder node_modules sudah muncul pada direktori anda
+
+### 5. Run Program
+Untuk menjalankan api jalankan perintah di terminal, pastikan sudah pernah install nodemon sebelumnya
+```bash
+npm run start
+```
