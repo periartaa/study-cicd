@@ -28,3 +28,4 @@ env:
 ```
 Sesuaikan dengan projek yang kalian buat.
 
+### Setelah konfiguutasi selesai, jalankan pada github action.
