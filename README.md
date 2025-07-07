@@ -7,7 +7,7 @@ CI/CD, atau Continuous Integration/Continuous Deployment, adalah praktik pengemb
 ### 1. Clone Repository
 Pertama kita donlowad repository dari github
 ```bash
-https://github.com/periartaa/study-cicd.git
+git clone https://github.com/periartaa/study-cicd.git
 ```
 
 ### 2. Instal Dependensi
