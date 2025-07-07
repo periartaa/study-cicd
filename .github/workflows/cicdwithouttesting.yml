@@ -5,7 +5,7 @@ on:
     branches: [main]
 
 env:
-  PROJECT_ID: study-cicd25
+  PROJECT_ID: kinetic-keep-465215-s1
   REGION: asia-southeast2
   ARTIFACT_REGISTRY: my-docker-repo
   ARTIFACT_LOCATION: asia-southeast2
