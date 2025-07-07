@@ -7,7 +7,7 @@ on:
 env:
   PROJECT_ID: study-cicd25
   REGION: asia-southeast2
-  ARTIFACT_REGISTRY: gs-demo
+  ARTIFACT_REGISTRY: my-docker-repo
   ARTIFACT_LOCATION: asia-southeast2
 
 jobs:
