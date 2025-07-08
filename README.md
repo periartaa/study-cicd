@@ -26,7 +26,6 @@ env:
   ARTIFACT_REGISTRY:....
   ARTIFACT_LOCATION:....
 ```
-note  **pastikan sesuai data pada google console**
 Sesuaikan dengan projek yang kalian buat.
 
 ### Setelah konfigurasi selesai, jalankan pada github action.
