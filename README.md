@@ -28,4 +28,17 @@ env:
 ```
 Sesuaikan dengan projek yang kalian buat.
 
+
+## Konfigurasi Google Console
+
+### 1. Select a project
+Pilih projek atau buat projek dan pastikan mengingat id projek
+contoh:
+```bash
+new-cicd-study
+```
+
+### 2. Artifact Registry API
+
+
 ### Setelah konfigurasi selesai, jalankan pada github action.
