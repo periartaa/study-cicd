@@ -122,6 +122,7 @@ gcloud run services add-iam-policy-binding app \
   --role="roles/run.invoker" \
   --region=asia-southeast2
 ```
+lakukan pada terminal google console
 
 ### 7. deploy ulang dan ambil link ---> lalu pengujian di postman
 
