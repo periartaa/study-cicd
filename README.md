@@ -75,5 +75,32 @@ new-cicd-study
   create
   ```
 
+### 3. IAM & Admin --> Service accounts --> Manage Key --> add key --> add new key --> JSON
+
+simpan file json
+
+buka akun github--> buka respository --> setting --> action --> new respository secret 
+
+contoh name
+``` bash
+GCP_SA_KEY
+```
+conoth Secret
+``` bash
+{
+  "type": "service_account",
+  "project_id": "new-cicd-study",
+  "private_key_id": "7fada959d9827e8853388dab2015a2b47cc95450",
+  "private_key": "-----BEGIN PRIVATE KEY-----
+  "client_email": "cicd-705@new-cicd-study.iam.gserviceaccount.com",
+  "client_id": "105745861054815779675",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/cicd-705%40new-cicd-study.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
+```
+
 
 ### Setelah konfigurasi selesai, jalankan pada github action.
