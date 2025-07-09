@@ -134,4 +134,3 @@ lalu jalankan file pengujian pada postman
   ``` bash
   Logout successful
   ```
-### Setelah konfigurasi selesai, jalankan pada github action.
