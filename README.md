@@ -139,4 +139,4 @@ lalu jalankan file pengujian pada postman
 
 
 ### Contoh Demo
-[Klik di sini untuk menonton video tutorial](https://www.youtube.com/watch?v=VIDEO_ID_ANDA)
+[Klik di sini untuk menonton video tutorial](https://youtu.be/gRHx0m41y-w)
