@@ -8,7 +8,7 @@ File Pengujian (File postman )
 
 > Klik link di atas untuk mengunduh atau membuka file Postman collection. Anda dapat mengimpornya ke Postman untuk menguji API endpoints.
 
-**## Instalasi**
+## Instalasi
 
 ### 1. Clone Repository
 
@@ -27,7 +27,7 @@ npm install
 ```
 Penginstalan berhasil ketika folder node_modules sudah muncul pada direktori anda.
 
-**## Konfigurasi Localhost**
+## Konfigurasi Localhost
 
 Jalankan perintah pada terminal
 
@@ -46,7 +46,7 @@ lalu jalankan file pengujian pada postman
   ```
 
 
-**## Konfigurasi Google Console**
+## Konfigurasi Google Console
 
 ### 1. Select a project
 
