@@ -8,10 +8,6 @@ File Pengujian (File postman )
 
 > Klik link di atas untuk mengunduh atau membuka file Postman collection. Anda dapat mengimpornya ke Postman untuk menguji API endpoints.
 
-```bash
-C:\persiapan intern\study\study-cicd\Study CI-CD.postman_collection
-```
-
 ## Instalasi
 
 ### 1. Clone Repository
