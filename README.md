@@ -123,5 +123,15 @@ gcloud run services add-iam-policy-binding app \
   --region=asia-southeast2
 ```
 
-### 7. deploy ulang
+### 7. deploy ulang dan ambil link ---> lalu pengujian di postman
+
+lalu jalankan file pengujian pada postman 
+- jika login berhasil maka output
+  ``` bash
+  Login successful
+  ```
+- jika outut berhasil maka output
+  ``` bash
+  Logout successful
+  ```
 ### Setelah konfigurasi selesai, jalankan pada github action.
