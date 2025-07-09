@@ -4,9 +4,9 @@ CI/CD, atau Continuous Integration/Continuous Deployment, adalah praktik pengemb
 
 File Pengujian (File postman )
 
-```bash
-Study CI-CD.postman_collection
-```
+📋 **Postman Collection**: [Study CI-CD.postman_collection](./Study%20CI-CD.postman_collection)
+
+> Klik link di atas untuk mengunduh atau membuka file Postman collection. Anda dapat mengimpornya ke Postman untuk menguji API endpoints.
 
 ```bash
 C:\persiapan intern\study\study-cicd\Study CI-CD.postman_collection
