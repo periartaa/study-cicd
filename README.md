@@ -58,5 +58,22 @@ new-cicd-study
 ```
 
 ### 2. Artifact Registry API
+- enabel Artifact Registry (jika belum dihidupka)
+- create respository
+
+  contoh name
+  ```bash
+  my-docker-repo
+  ```
+  contoh regional
+  ``` bash
+  asia-southeast2 (Jakarta)
+  ```
+  
+- jika sudah lalu pilih
+  ``` bash
+  create
+  ```
+
 
 ### Setelah konfigurasi selesai, jalankan pada github action.
