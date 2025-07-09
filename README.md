@@ -101,6 +101,27 @@ conoth Secret
   "universe_domain": "googleapis.com"
 }
 ```
+### 4. Konfigurasi env
 
+```bash
+env:
+  PROJECT_ID:....
+  REGION:....
+  ARTIFACT_REGISTRY:....
+  ARTIFACT_LOCATION:....
+```
+pastikan sesaui dengan data yang dibuat
 
+### 5. push and deploy witch github action
+
+### 6. allow unauthenticated access
+
+``` bash
+gcloud run services add-iam-policy-binding app \
+  --member="allUsers" \
+  --role="roles/run.invoker" \
+  --region=asia-southeast2
+```
+
+### 7. deploy ulang
 ### Setelah konfigurasi selesai, jalankan pada github action.
