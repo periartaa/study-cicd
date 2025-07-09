@@ -8,7 +8,7 @@ File Pengujian (File postman )
 
 > Klik link di atas untuk mengunduh atau membuka file Postman collection. Anda dapat mengimpornya ke Postman untuk menguji API endpoints.
 
-## Instalasi
+**## Instalasi**
 
 ### 1. Clone Repository
 
@@ -25,10 +25,9 @@ Jalankan perintah berikut untuk menginstal dependensi pada projek anda.
 ```bash
 npm install
 ```
-
 Penginstalan berhasil ketika folder node_modules sudah muncul pada direktori anda.
 
-## Konfigurasi Localhost
+**## Konfigurasi Localhost**
 
 Jalankan perintah pada terminal
 
@@ -36,19 +35,18 @@ Jalankan perintah pada terminal
 npm run start
 ```
 
-### 3. Konfigurasi env
+lalu jalankan file pengujian pada postman 
+- jika login berhasil maka output
+  ``` bash
+  Login successful
+  ```
+- jika outut berhasil maka output
+  ``` bash
+  Logout successful
+  ```
 
-```bash
-env:
-  PROJECT_ID:....
-  REGION:....
-  ARTIFACT_REGISTRY:....
-  ARTIFACT_LOCATION:....
-```
 
-Sesuaikan dengan projek yang kalian buat.
-
-## Konfigurasi Google Console
+**## Konfigurasi Google Console**
 
 ### 1. Select a project
 
